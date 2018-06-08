@@ -1,0 +1,1 @@
+{"filter":false,"title":"sample.txt","tooltip":"/practice_and_kadai/kadai-commit/sample.txt","ace":{},"undoManager":{"mark":-1,"position":-1,"stack":[]},"timestamp":1527035716712,"hash":"ace60e25ae71acae5ebb6a5137c27f114c1dd1f5"}

@@ -1,0 +1,24 @@
+<header>
+    ヘッダー
+</header>
+<div id="wrapper">
+    <div id="main">
+        メイン
+    </div>
+    <aside>
+        サイドバー
+    </aside>
+</div>
+<div class="clear"></div>
+<footer>
+    フッター
+</footer>
+
+
+
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}

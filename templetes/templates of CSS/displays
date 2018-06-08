@@ -1,0 +1,21 @@
+<div class="r">div1</div>
+<div class="g">div2</div>
+<div class="b">div3</div>
+
+
+<span class="r">span1</span>
+<span class="g">span2</span>
+<span class="b">span3</span>
+
+
+
+.r { background-color: pink; }
+.g { background-color: palegreen; }
+.b { background-color: skyblue; }
+
+div.r {
+    display: inline;
+}
+div.g {
+    display: inline;
+}

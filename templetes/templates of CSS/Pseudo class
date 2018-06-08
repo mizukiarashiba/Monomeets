@@ -1,0 +1,14 @@
+a:link {
+    color: #0000ff;
+}
+a:hover {
+    color: #ff0000;
+}
+a:visited {
+    color: #999999;
+}
+
+
+
+link
+http://www.htmq.com/css3/#sele

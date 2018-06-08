@@ -1,0 +1,7 @@
+<!-- DOCTYPEとhtmlタグは省略 -->
+<head>
+    <meta charset="UTF-8">
+    <title>HTML文書の基本</title>
+    <link rel="stylesheet" href="https://techacademy.jp/common/style.css">
+    <meta name="description" content="文書の説明は検索エンジンの検索結果ページに表示されるため、タイトルと並びSEO上非常に重要です。">
+</head>

@@ -1,0 +1,17 @@
+<!-- headまで省略 -->
+<body>
+    <header>
+        <!-- ここにヘッダーが入ります -->
+    </header>
+    <div>
+        <aside>
+            <!-- ここにサイドバーが入ります -->
+        </aside>
+        <article>
+            <!-- ここに本文が入ります -->
+        </article>
+    </div>
+    <footer>
+        <!-- ここにフッターが入ります -->
+    </footer>
+</body>

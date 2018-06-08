@@ -1,0 +1,24 @@
+.clear {
+  clear: both;
+}
+header {
+  height: 50px;
+  background-color: #ffdddd;
+}
+div#main {
+  float: left;
+  width: 60%;
+  height: 100px;
+  background-color: #ddffdd;
+}
+aside {
+  float: right;
+  width: 30%;
+  height: 100px;
+  background-color: #ffddff;
+}
+footer {
+  margin-top: 50px;
+  height: 50px;
+  background-color: #ddddff;
+}

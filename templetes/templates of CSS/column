@@ -1,0 +1,55 @@
+HTML
+
+
+<header>
+  ヘッダー
+</header>
+<div id="wrapper" class="clearfix">
+  <aside class="left">
+    サイドバー（左）
+  </aside>
+  <div id="main">
+    メイン
+  </div>
+  <aside class="right">
+    サイドバー（右）
+  </aside>
+</div>
+<footer>
+  フッター
+</footer>
+
+
+CSS
+
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+header {
+  height: 50px;
+  background-color: #ffdddd;
+}
+div#main {
+  float: left;
+  width: 34%;
+  height: 100px;
+  background-color: #ddffdd;
+}
+aside {
+  width: 33%;
+  height: 100px;
+  background-color: #ffddff;
+}
+aside.left {
+  float: left;
+}
+aside.right {
+  float: right;
+}
+footer {
+  height: 50px;
+  background-color: #ddddff;
+}s
