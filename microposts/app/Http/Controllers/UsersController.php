@@ -8,6 +8,7 @@ use App\User; // add
 use App\Micropost; // add
 
 
+
 class UsersController extends Controller
 {
     /**
