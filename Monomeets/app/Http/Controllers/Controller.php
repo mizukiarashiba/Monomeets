@@ -10,4 +10,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    
+    public function counts($user) {
+        $count_monos = $user->monos()->count();
+
+        return [
+            'count_monos' => $count_monos,
+        ];
+    }
+
 }
