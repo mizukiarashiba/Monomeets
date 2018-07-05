@@ -13,6 +13,9 @@
                 <p>{!! nl2br(e($mono->content)) !!}</p>
             </div>
             <div>
+                  
+                @include ('mono_favorite.favorite_button', ['monos' => $monos])
+                
                 @if (Auth::id() == $mono->user_id)
                     {!! Form::open(['route' => ['monos.destroy', $mono->id], 'method' => 'delete']) !!}
                         {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
