@@ -18,18 +18,16 @@ class MonosController extends Controller
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $monos = $user->monos()->orderBy('created_at', 'desc')->paginate(10);
+            $monos = $user->feed_monos()->orderBy('created_at', 'desc')->paginate(10);
 
             $data = [
                 'user' => $user,
                 'monos' => $monos,
             ];
-            $data += $this->counts($user);
-            return view('users.show', $data);
-        }else {
-            return view('welcome');
         }
+        return view('welcome', $data);
     }
+
     
     
     public function store(Request $request)
