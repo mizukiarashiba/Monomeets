@@ -36,6 +36,22 @@ class UsersController extends Controller
     }
     
     
+    public function overview($id)
+    {
+        $user = User::find($id);
+        $monos = $user->monos()->orderBy('created_at', 'desc')->paginate(10);
+
+        $data = [
+            'user' => $user,
+            'monos' => $monos,
+        ];
+
+        $data += $this->counts($user);
+
+        return view('users.timeline', $data);
+    }
+    
+    
     
     public function followings($id)
     {

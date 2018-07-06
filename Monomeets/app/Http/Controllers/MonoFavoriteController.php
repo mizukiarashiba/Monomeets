@@ -17,5 +17,7 @@ class MonoFavoriteController extends Controller
         \Auth::user()->unfavorite($id);
         return redirect()->back();
     }
+    
+    
 
 }
