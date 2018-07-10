@@ -10,11 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
+*/
 Route::get('/', 'MonosController@index');
 
 
@@ -34,6 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'users/{id}'], function () {
         
         Route::get('overview', 'UsersController@overview')->name('users.timeline');
+        Route::get('seedetails', 'UsersController@seedetails')->name('monos.monopage');
+        
         
         
         Route::post('follow', 'UserFollowController@store')->name('user.follow');
@@ -48,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::resource('monos', 'MonosController', ['only' => ['store', 'destroy']]);
+    
 });
 
 

@@ -15,17 +15,35 @@ class MonosController extends Controller
      */
     public function index()
     {
-        $data = [];
+     /*   $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $monos = $user->feed_monos()->orderBy('created_at', 'desc')->paginate(10);
+            $monos = $user->feed_monos()->orderBy('created_at', 'desc')->paginate(1);
+
+            $data = [
+                'user' => $user,
+                'monos' => $monos,
+            ];           
+            $data += $this->counts($user);
+            return view('users.show', $data);
+        }
+        return view('welcome', $data);
+    }*/
+    
+     $data = [];
+        if (\Auth::check()) {
+            $user = \Auth::user();
+            $monos = $user->monos()->orderBy('created_at', 'desc')->paginate(10);
 
             $data = [
                 'user' => $user,
                 'monos' => $monos,
             ];
+            $data += $this->counts($user);
+            return view('users.show', $data);
+        }else {
+            return view('welcome');
         }
-        return view('welcome', $data);
     }
 
     
@@ -33,10 +51,12 @@ class MonosController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'title' => 'required|max:191',
             'content' => 'required|max:191',
         ]);
 
         $request->user()->monos()->create([
+            'title' => $request->title,
             'content' => $request->content,
         ]);
 

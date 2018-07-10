@@ -13,7 +13,6 @@
             </div>
             
             <li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}"><a href="{{ route('users.timeline', ['id' => $user->id]) }}">TimeLine <span class="badge">{{ $count_monos }}</span></a></li>
-            
             @include('user_follow.follow_button', ['user' => $user])
             
 
@@ -28,14 +27,19 @@
             @if (Auth::id() == $user->id)
                   {!! Form::open(['route' => 'monos.store']) !!}
                       <div class="form-group">
+                          {!! Form::label('title', 'タイトル:') !!}
+                          {!! Form::textarea('title', old('title'), ['class' => 'form-control', 'rows' => '2']) !!}
+                         
+                          
+                          {!! Form::label('content', 'メッセージ:') !!}
                           {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
                           {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
                       </div>
                   {!! Form::close() !!}
             @endif
-            @if (count($monos) > 0)
+           <!-- @if (count($monos) > 0)
                 @include('monos.monos', ['monos' => $monos])
-            @endif
+            @endif -->
         </div>
     </div>
 @endsection

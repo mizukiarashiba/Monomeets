@@ -51,6 +51,23 @@ class UsersController extends Controller
         return view('users.timeline', $data);
     }
     
+
+    public function seedetails($id)
+    {
+        $mono = Mono::find($id);
+        //$user = User::find($id);
+        $monos = [$mono];//$user->monos()->orderBy('created_at', 'desc')->paginate(10);
+        $user = $mono->user()->get()[0];
+        $data = [
+            'user' => $user,
+            'monos' => $monos,
+        ];
+//var_dump($user);
+       $data += $this->counts($user);
+
+        return view('monos.monopage', $data);
+    }
+    
     
     
     public function followings($id)
