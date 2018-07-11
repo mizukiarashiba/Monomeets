@@ -6,10 +6,29 @@ use Illuminate\Http\Request;
 
 use App\User;
 
-use App\Mono;// 追加
+use App\Mono;
+
+
+
+
+
 
 class UsersController extends Controller
+
+
+
+
 {
+    
+    
+    public function __construct() 
+     { 
+  
+         $this->middleware('auth'); 
+     } 
+
+    
+    
     public function index()
     {
         $users =  User::paginate(10);
@@ -19,6 +38,31 @@ class UsersController extends Controller
             'users' => $users,
         ]);
     }
+    
+    /*
+    
+    public function index()
+    {
+        $data = [];
+        if (\Auth::check()) {
+            $user = \Auth::user();
+            $monos = $user->monos()->orderBy('created_at', 'desc')->paginate(10);
+
+            $data = [
+                'user' => $user,
+                'monos' => $monos,
+            ];
+            $data += $this->counts($user);
+            return view('users.show', $data);
+        }else {
+            return view('users.index', [
+            'users' => $users,
+        ]);
+        }
+        
+    }*/
+    
+    
     
       public function show($id)
     {
@@ -33,6 +77,17 @@ class UsersController extends Controller
         $data += $this->counts($user);
 
         return view('users.show', $data);
+        
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
     }
     
     
@@ -123,7 +178,35 @@ class UsersController extends Controller
         
     }
 
+    public function wantings($id)
+    {
+        $user = User::find($id);
+        $wantings = $user->wantings()->paginate(10);
+        
+        $data = [
+           'user' => $user,
+           'users' => $wantings,
+        ];
+        
+         $data += $this->counts($user);
+        
+        return view('wants.wants', $data);
+    }
+    
+     public function wanters($id)
+    {
+        $user = User::find($id);
+        $wanters = $user->wanters()->paginate(10);
 
+        $data = [
+            'user' => $user,
+            'users' => $wanters,
+        ];
+
+        $data += $this->counts($user);
+
+        return view('users.wanters', $data);
+    }
 
     
     
