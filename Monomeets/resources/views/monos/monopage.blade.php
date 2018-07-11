@@ -32,17 +32,22 @@
     <br>
     
     <!-- リクエスト用フォーム　いろいろ作る　-->
-             @if (Auth::user()->is_favoriting($mono->id))
-        {!! Form::open(['route' => ['user.unfavorite', $mono->id], 'method' => 'delete']) !!}
-            {!! Form::submit('Unrequest', ['class' => "btn btn-danger btn-xs"]) !!}
+            @if (Auth::id() != $user->id)
+    @if (Auth::user()->is_wanting($user->id))
+        {!! Form::open(['route' => ['user.unwant', $user->id], 'method' => 'delete']) !!}
+            {!! Form::submit('やっぱいらん♪', ['class' => "btn btn-danger btn-block"]) !!}
         {!! Form::close() !!}
     @else
-        {!! Form::open(['route' => ['user.favorite', $mono->id]]) !!}
-            {!! Form::submit('Request', ['class' => "btn btn-primary btn-xs"]) !!}
+        {!! Form::open(['route' => ['user.want', $user->id]]) !!}
+            {!! Form::submit('めっちゃ欲しい💦', ['class' => "btn btn-primary btn-block"]) !!}
         {!! Form::close() !!}
     @endif
+　　@endif
+
         </div>
-            
+ 
+ 
+   
             
             
 @endforeach

@@ -144,6 +144,60 @@ public function is_favoriting($monoId) {
     return $this->favoritings()->where('favorite_id', $monoId)->exists();
 }
 
+public function conversations() 
+     { 
+         return $this->belongsToMany('App\conversation', 'conversations'); 
+     } 
+
+ public function want($userId)
+{
+    // 既にフォローしているかの確認
+    $exist = $this->is_wanting($userId);
+    // 自分自身ではないかの確認
+    $its_me = $this->id == $userId;
+
+    if ($exist || $its_me) {
+        // 既にフォローしていれば何もしない
+        return false;
+    } else {
+        // 未フォローであればフォローする
+        $this->wantings()->attach($userId);
+        return true;
+    }
+}
+
+public function unwant($userId)
+{
+    // 既にフォローしているかの確認
+    $exist = $this->is_wanting($userId);
+    // 自分自身ではないかの確認
+    $its_me = $this->id == $userId;
+
+    if ($exist && !$its_me) {
+        // 既にフォローしていればフォローを外す
+        $this->wantings()->detach($userId);
+        return true;
+    } else {
+        // 未フォローであれば何もしない
+        return false;
+    }
+}
+    
+    public function is_wanting($userId) {
+        return $this->wantings()->where('want_id', $userId)->exists();
+    }
+    
+     public function wantings()
+    {
+        return $this->belongsToMany(User::class, 'user_want', 'user_id', 'want_id')->withTimestamps();
+    }
+
+    public function wanters()
+    {
+        return $this->belongsToMany(User::class, 'user_want', 'want_id', 'user_id')->withTimestamps();
+    }
+
+
 
 
 

@@ -47,9 +47,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('favorite', 'MonoFavoriteController@store')->name('user.favorite');
         Route::delete('unfavorite', 'MonoFavoriteController@destroy')->name('user.unfavorite');
         Route::get('favoritings', 'UsersController@favoritings')->name('users.favoritings');
+        
+        Route::post('want', 'UserWantController@store')->name('user.want');
+        Route::delete('unwant', 'UserWantController@destroy')->name('user.unwant');
+        Route::get('wantings', 'UsersController@wantings')->name('users.wantings');
+        Route::get('wanters', 'UsersController@wanters')->name('users.wanters');
     });
 
     Route::resource('monos', 'MonosController', ['only' => ['store', 'destroy']]);
+    
+    
     
 });
 

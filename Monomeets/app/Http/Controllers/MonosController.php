@@ -15,10 +15,10 @@ class MonosController extends Controller
      */
     public function index()
     {
-     /*   $data = [];
+       /* $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $monos = $user->feed_monos()->orderBy('created_at', 'desc')->paginate(1);
+            $monos = $user->feed_monos()->orderBy('created_at', 'desc')->paginate(10);
 
             $data = [
                 'user' => $user,
@@ -28,8 +28,8 @@ class MonosController extends Controller
             return view('users.show', $data);
         }
         return view('welcome', $data);
-    }*/
-    
+    }
+    */
      $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
@@ -44,6 +44,8 @@ class MonosController extends Controller
         }else {
             return view('welcome');
         }
+        
+        
     }
 
     
