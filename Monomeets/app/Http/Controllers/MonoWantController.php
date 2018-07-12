@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UserWantController extends Controller
+class MonoWantController extends Controller
 {
-    public function store(Request $request, $id)
+     public function store(Request $request, $id)
     {
         \Auth::user()->want($id);
         return redirect()->back();
@@ -17,4 +17,8 @@ class UserWantController extends Controller
         \Auth::user()->unwant($id);
         return redirect()->back();
     }
+    
+   
+    
+
 }

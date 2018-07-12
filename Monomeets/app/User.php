@@ -144,60 +144,58 @@ public function is_favoriting($monoId) {
     return $this->favoritings()->where('favorite_id', $monoId)->exists();
 }
 
-public function conversations() 
-     { 
-         return $this->belongsToMany('App\conversation', 'conversations'); 
-     } 
 
- public function want($userId)
+
+  
+    public function want($monoId)
 {
     // 既にフォローしているかの確認
-    $exist = $this->is_wanting($userId);
+    $exist = $this->is_wanting($monoId);
     // 自分自身ではないかの確認
-    $its_me = $this->id == $userId;
-
-    if ($exist || $its_me) {
+    
+    if ($exist) {
         // 既にフォローしていれば何もしない
         return false;
     } else {
         // 未フォローであればフォローする
-        $this->wantings()->attach($userId);
+        $this->wantings()->attach($monoId);
         return true;
     }
 }
 
-public function unwant($userId)
+public function unwant($monoId)
 {
     // 既にフォローしているかの確認
-    $exist = $this->is_wanting($userId);
+    $exist = $this->is_wanting($monoId);
     // 自分自身ではないかの確認
-    $its_me = $this->id == $userId;
+    
 
-    if ($exist && !$its_me) {
+    if ($exist) {
         // 既にフォローしていればフォローを外す
-        $this->wantings()->detach($userId);
+        $this->wantings()->detach($monoId);
         return true;
     } else {
         // 未フォローであれば何もしない
         return false;
     }
 }
-    
-    public function is_wanting($userId) {
-        return $this->wantings()->where('want_id', $userId)->exists();
-    }
-    
-     public function wantings()
+
+public function is_wanting($monoId) {
+    return $this->wantings()->where('want_id', $monoId)->exists();
+}
+
+
+
+  public function wantings()
     {
-        return $this->belongsToMany(User::class, 'user_want', 'user_id', 'want_id')->withTimestamps();
+        return $this->belongsToMany(Mono::class, 'mono_want', 'user_id', 'want_id')->withTimestamps();
     }
+    
 
     public function wanters()
     {
-        return $this->belongsToMany(User::class, 'user_want', 'want_id', 'user_id')->withTimestamps();
+        return $this->belongsToMany(Mono::class, 'mono_want', 'want_id', 'user_id')->withTimestamps();
     }
-
-
 
 
 

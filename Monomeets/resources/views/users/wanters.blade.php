@@ -17,13 +17,11 @@
         <div class="col-xs-8">
             <ul class="nav nav-tabs nav-justified">
                
-               
-                <!--<li role="presentation" class="{{ Request::is('users/*/followings') ? 'active' : '' }}"><a href="{{ route('users.followings', ['id' => $user->id]) }}">Followings <span class="badge">{{ $count_followings }}</span></a></li>
+               <li role="presentation" class="{{ Request::is('users/*/followings') ? 'active' : '' }}"><a href="{{ route('users.followings', ['id' => $user->id]) }}">Followings <span class="badge">{{ $count_followings }}</span></a></li>
                 <li role="presentation" class="{{ Request::is('users/*/followers') ? 'active' : '' }}"><a href="{{ route('users.followers', ['id' => $user->id]) }}">Followers <span class="badge">{{ $count_followers }}</span></a></li>
-                -->
                 <li role="presentation" class="{{ Request::is('users/*/favoritings') ? 'active' : '' }}"><a href="{{ route('users.favoritings', ['id' => $user->id]) }}">Favoritings <span class="badge">{{ $count_favoritings }}</span></a></li>
-                <li role="presentation" class="{{ Request::is('users/*/wantings') ? 'active' : '' }}"><a href="{{ route('users.wantings', ['id' => $user->id]) }}">欲しいものリスト <span class="badge">{{ $count_wantings }}</span></a></li>
-　              <li role="presentation" class="{{ Request::is('users/*/wanters') ? 'active' : '' }}"><a href="{{ route('users.wanters', ['id' => $user->id]) }}">想われリスト<span class="badge">{{ $count_wanters }}</span></a></li>
+                <li role="presentation" class="{{ Request::is('users/*/wantings') ? 'active' : '' }}"><a href="{{ route('monos.wantings', ['id' => $mono->id]) }}">欲しいものリスト <span class="badge">{{ $count_wantings }}</span></a></li>
+　              <li role="presentation" class="{{ Request::is('users/*/wanters') ? 'active' : '' }}"><a href="{{ route('monos.wanters', ['id' => $mono->id]) }}">想われリスト<span class="badge">{{ $count_wanters }}</span></a></li>
             </ul>
             @include('users.users', ['users' => $users])
         </div>

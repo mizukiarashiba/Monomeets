@@ -14,7 +14,7 @@
         
         <div class="panel-footer">
            　　　 @include ('mono_favorite.favorite_button', ['monos' => $monos])
-           　　　  @include ('user_want.want_button', ['user' => $user])
+           　　　  @include ('mono_want.want_button', ['user' => $user])
         </div>
         
             <div>

@@ -172,35 +172,34 @@ class UsersController extends Controller
         return view('users.favoritings', $data);
         
         
-        
-        
-        
-        
     }
 
+    
+
+    
     public function wantings($id)
     {
         $user = User::find($id);
         $wantings = $user->wantings()->paginate(10);
-        
+
         $data = [
-           'user' => $user,
-           'users' => $wantings,
+            'user' => $user,
+            'monos' => $wantings,
         ];
-        
-         $data += $this->counts($user);
-        
-        return view('wants.wants', $data);
+
+        $data += $this->counts($user);
+
+        return view('users.wantings', $data);
     }
-    
-     public function wanters($id)
+
+    public function wanters($id)
     {
         $user = User::find($id);
         $wanters = $user->wanters()->paginate(10);
 
         $data = [
             'user' => $user,
-            'users' => $wanters,
+            'monos' => $wanters,
         ];
 
         $data += $this->counts($user);
@@ -208,8 +207,6 @@ class UsersController extends Controller
         return view('users.wanters', $data);
     }
 
-    
-    
     
 
 }
