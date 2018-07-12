@@ -35,9 +35,9 @@ Route::group(['middleware' => 'auth'], function () {
         
         Route::get('overview', 'UsersController@overview')->name('users.timeline');
         Route::get('seedetails', 'UsersController@seedetails')->name('monos.monopage');
-        
-        
-        
+        Route::get('chat', 'UsersController@chat')->name('users.chat');
+
+
         Route::post('follow', 'UserFollowController@store')->name('user.follow');
         Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
         Route::get('followings', 'UsersController@followings')->name('users.followings');

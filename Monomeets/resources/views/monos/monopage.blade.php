@@ -44,13 +44,14 @@
     @endif
 　　@endif
 
-        </div>
  
- 
-   
             
             
 @endforeach
+       </div>
+       {!! link_to_route('users.chat', 'Chat', ['id' => $user->id]) !!}
+ 
+   
 
 
 @endsection

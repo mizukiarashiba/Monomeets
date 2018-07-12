@@ -106,6 +106,29 @@ class UsersController extends Controller
         return view('users.timeline', $data);
     }
     
+    
+     public function chat($id)
+    {
+        $user = User::find($id);
+        /*$monos = $user->monos()->orderBy('created_at', 'desc')->paginate(10);
+        */
+
+        $data = [
+            'user' => $user,
+           /* 'monos' => $monos,
+            */
+        
+        ];
+
+        $data += $this->counts($user);
+
+        return view('users.chat', $data);
+    }
+    
+    
+   
+    
+    
 
     public function seedetails($id)
     {
