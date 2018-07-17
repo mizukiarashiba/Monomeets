@@ -101,7 +101,12 @@ public function unfollow($userId)
     
      public function favoritings()
     {
-        return $this->belongsToMany(Mono::class, 'mono_favorite', 'mono_id', 'favorite_id')->withTimestamps();
+        //
+        // User Mono intermdediate 
+        // rable p< mono_favroite
+        // User --> mono_id  user_id
+        // MOno --> favorite_id
+        return $this->belongsToMany(Mono::class, 'mono_favorite', 'user_id', 'favorite_id')->withTimestamps();
     }
     
     
@@ -197,6 +202,11 @@ public function is_wanting($monoId) {
         return $this->belongsToMany(Mono::class, 'mono_want', 'want_id', 'user_id')->withTimestamps();
     }
 
+    
+      public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 
 
 

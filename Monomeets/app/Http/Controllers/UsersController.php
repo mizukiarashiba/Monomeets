@@ -109,20 +109,26 @@ class UsersController extends Controller
     
      public function chat($id)
     {
-        $user = User::find($id);
-        /*$monos = $user->monos()->orderBy('created_at', 'desc')->paginate(10);
-        */
+         
+         $user = User::find($id);
+        $posts = $user->monos()->orderBy('created_at', 'desc')->paginate(10);
 
         $data = [
             'user' => $user,
-           /* 'monos' => $monos,
-            */
+            'posts' => $posts,
+           
         
         ];
 
         $data += $this->counts($user);
 
         return view('users.chat', $data);
+       
+
+       
+
+        
+        
     }
     
     
