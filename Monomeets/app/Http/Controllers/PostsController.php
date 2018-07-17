@@ -11,16 +11,18 @@ class PostsController extends Controller
 {
      public function index()
     {
-        $data = [];
+         $data = [];
         
-            $user = user();
-            $posts = $user->posts()->orderBy('created_at', 'desc')->paginate(10);
+            $user = \Auth::user();
+            $posts = $user->feed_posts()->orderBy('created_at', 'desc')->paginate(10);
 
             $data = [
                 'user' => $user,
                 'posts' => $posts,
             ];
-            $data += $this->counts($user);
+        
+
+           // $data += $this->counts($user);
             return view('users.chat', $data);
         
     }
@@ -28,11 +30,11 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'content' => 'required|max:191',
+            'saying' => 'required|max:191',
         ]);
 
         $request->user()->posts()->create([
-            'content' => $request->content,
+            'saying' => $request->saying,
         ]);
 
         return redirect()->back();

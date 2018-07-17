@@ -56,10 +56,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('monos', 'MonosController', ['only' => ['store', 'destroy']]);
     
-    Route::group(['middleware' => 'auth'], function () {
-    Route::resource('users', 'UsersController', ['only' => ['index', 'chat']]);
-    Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy']]);
-});
+    //Route::group(['middleware' => 'auth'], function () {
+    //Route::resource('users', 'UsersController', ['only' => ['index', 'chat']]);
+    Route::resource('posts', 'PostsController', ['only' => ['index', 'store', 'destroy']]);
+//});
 
 
 

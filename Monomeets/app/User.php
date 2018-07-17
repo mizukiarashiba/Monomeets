@@ -208,6 +208,17 @@ public function is_wanting($monoId) {
         return $this->hasMany(Post::class);
     }
 
+     public function feed_posts()
+    {
+        $wanter_user_ids = $this->wanters()-> pluck('users.id')->toArray();
+        $wanter_user_ids[] = $this->id;
+        return Post::whereIn('user_id', $wanter_user_ids);
+
+
+        $want_user_ids = $this->wantings()-> pluck('users.id')->toArray();
+        $want_user_ids[] = $this->id;
+        return Post::whereIn('user_id', $want_user_ids);
+    }
 
 
 }

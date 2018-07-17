@@ -111,7 +111,7 @@ class UsersController extends Controller
     {
          
          $user = User::find($id);
-        $posts = $user->monos()->orderBy('created_at', 'desc')->paginate(10);
+        $posts = $user->posts()->orderBy('created_at', 'desc')->paginate(10);
 
         $data = [
             'user' => $user,
